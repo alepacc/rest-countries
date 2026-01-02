@@ -1,0 +1,45 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Remove default link styles */
+a {
+    color: inherit;
+    // text-decoration: none;
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Remove default button styles */
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+/* Remove default input styles */
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Remove default form styling */
+form {
+    margin: 0;
+    padding: 0;
+}
