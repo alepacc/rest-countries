@@ -1,0 +1,32 @@
+@use "./variables" as *;
+@use "./mixin" as *;
+@use "./reset" as *;
+
+
+
+.container{
+    background-color: $grey-50;
+}
+.country-card {
+    @include flex(column);
+    align-items: flex-start;
+    width: auto;
+    border-radius: 15px;
+    background-color: $white;
+    overflow: hidden;
+    box-shadow: 1px 2px 20px 5px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+
+    &__detail {
+        @include flex(column);
+        gap: 5px;
+        padding: 20px;
+        margin: 15px 0;
+    }
+}
+
+.country-list {
+    @include flex(column);
+    align-items: center;
+    gap: 20px;
+}
