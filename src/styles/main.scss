@@ -2,11 +2,71 @@
 @use "./mixin" as *;
 @use "./reset" as *;
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&display=swap');
 
+// @font-face {
+//     font-family: 'Nunito Sans';
+//     src:url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&display=swap');
+//     font-weight: 300, 600, 800;
+// }
+
+body {
+    font-family: 'Nunito Sans';
+    background-color: $grey-950;
+}
 
 .container{
     background-color: $grey-50;
 }
+
+// header styles
+.header {
+    @include flex(row);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+
+    &__button {
+        @include button-style;
+        font-size: 14px;
+        font-weight: 600;
+        color: $grey-950;
+        background-color: transparent;
+        border: none;
+       
+    }
+}
+
+.filter-dropdown, .filter-menu, .search-bar {
+    @include flex(row);
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    padding: 10px 20px;
+    background-color: $white;
+    border-radius: 5px;
+    box-shadow: 1px 2px 20px 5px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.search-bar{    width: 100%;
+}
+.search-input {
+    width: 400px;
+    font-size: 14px;
+    color: $grey-950;
+    border: none;
+}
+
+.filter-menu {
+    @include flex(column);
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 5px;
+}           
+
+// components styles
 .country-card {
     @include flex(column);
     align-items: flex-start;
@@ -30,3 +90,11 @@
     align-items: center;
     gap: 20px;
 }
+
+
+
+// theme variables
+.dark-mode{
+    display: none ;
+}
+

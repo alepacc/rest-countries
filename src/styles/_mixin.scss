@@ -1,4 +1,13 @@
+@use "./variables" as *;
+
 @mixin flex($direction) {
     display: flex;
     flex-direction: $direction;
+}
+
+@mixin button-style {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    
 }

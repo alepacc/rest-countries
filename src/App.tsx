@@ -1,53 +1,50 @@
-import {useEffect, useState } from 'react'
-import { countriesAPI } from './utils/api';
-import type { Country } from './type/country';
-
-
+import CountryCard from './components/CountryCard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun, faAngleUp, faAngleDown, faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faMoon } from '@fortawesome/free-regular-svg-icons'
 function App() {
-  const [countries, setCountries] = useState<Country[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await countriesAPI.getAllCountries();
-        setCountries(data);
-      } catch (error) {
-        console.error('Error fetching countries in App component:', error);
-        // TODO: Handle error appropriately in the UI
-      }
-    };
-
-    fetchData();
-  }, []);
-
-
   // input filtro 
 
   return (
     <>
-      <div className="container">
+      <main className="container">
         <section className='header'>
-          <h1>Where in the world?</h1>
-          <button className='header__button'>Dark Mode</button>
+          <h3>Where in the world?</h3>
+          <button className='header__button light-mode'>
+            <FontAwesomeIcon icon={faMoon} style={{rotate: "-30deg"}} />
+            Dark Mode
+          </button>
+          <button  className='header__button dark-mode'>
+            <FontAwesomeIcon icon={faSun} style={{color:"black"}} />
+            Light Mode
+          </button>
         </section>
-        <input className='search-bar' type="text" placeholder='Search for a country...'/>
-        <input className='filter-bar' type="text" placeholder='Filter by Region'/>
+        <div className='search-bar'>
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+          <input className='search-input' type="text" id='search' placeholder='Search for a country...'/>
+        </div>
+        <div className='filter-dropdown'>
+          <span>Filter by Region</span>
+          <button className='filter-dropdown__icon--up'>
+            <FontAwesomeIcon icon={faAngleDown} />
+          </button>
+          {/* <button className='filter-dropdown__icon--down'>
+            <FontAwesomeIcon icon={faAngleUp} />
+          </button>
+          <button className='filter-dropdown__icon--close'>
+            <FontAwesomeIcon icon={faXmark} />
+          </button> */}
+        </div>
+        <section className='filter-menu'>
+          <span>Africa</span>
+          <span>Americas</span>
+          <span>Asia</span>
+          <span>Europe</span>
+          <span>Oceania</span>
+        </section>
+        <CountryCard />
         
-        <main className='country-list'>
-        {countries.map((country) => (
-            <section key={country.cca3} className='country-card'>
-              <picture>
-                <img src={country.flags.png} alt={country.flags.alt || `Flag of ${country.name.common}`} />
-              </picture>
-              <section className='country-card__detail'>
-                <h2>{country.name.common}</h2> 
-                <span><b>Population:</b> {country.population}</span>
-                <span><b>Region:</b> {country.region}</span>
-                <span><b>Capital:</b> {country.capital}</span>
-              </section>
-            </section>  
-          ))}
-        </main>
-      </div>
+      </main>
     </>
   )
 }
