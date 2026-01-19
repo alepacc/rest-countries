@@ -1,3 +1,10 @@
+export interface DropdownProps{
+  label: string; // The text to display on the dropdown
+  option: string[]; // The list of options to display in the dropdown
+  value: string | null; // The currently selected value
+  onChange: (value: string | null) => void; // Callback function when an option is selected
+}
+
 export interface Country {
   name: {
     common: string;
@@ -31,3 +38,4 @@ export interface Country {
   borders?: string[];
   tld?: string[];
 }
+
