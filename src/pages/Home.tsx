@@ -8,22 +8,37 @@ import SearchInput from '../components/SearchInput';
 
 function Home() {
     const [countries, setCountries] = useState<Country[]>([]);
-    const [selectedRegion, setSelectedRegion] = useState<null|string>(null);
-
+    const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+    const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
-        try {
-            const data = await countriesAPI.getAllCountries();
-            setCountries(data);
-        } catch (error) {
-            console.error('Error fetching countries:', error);
-            // TODO: Handle error appropriately in the UI
-        }
+            try {
+                const data = await countriesAPI.getAllCountries();
+                setCountries(data);
+            } catch (error) {
+                console.error('Error fetching countries:', error);
+                // TODO: Handle error appropriately in the UI
+            }
         };
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (selectedRegion == null) return;
+        const fetchFiltered = async () => {
+            try {
+                const filteredData = await countriesAPI.getFilteredCountries(selectedRegion);
+                setFilteredCountries(filteredData);
+            } catch (error) {
+                console.error('Error fetching filtered countries:', error);
+            }
+        };
+
+        fetchFiltered();
+    }, [selectedRegion]); 
+    
 
     return (
         <>  
@@ -35,7 +50,13 @@ function Home() {
                 value={selectedRegion}
                 onChange={setSelectedRegion}
             />
-            <CountryList  countries={countries}/>
+            
+            {selectedRegion  ? (
+                <CountryList countries={filteredCountries} />
+            ) : (
+                <CountryList countries={countries}/>
+            )
+            }
        </>
     )
 

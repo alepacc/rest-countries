@@ -11,6 +11,7 @@ body {
 
 .container{
     background-color: $grey-50;
+    // TODO: responsive desktop
 }
 
 button {
@@ -71,7 +72,7 @@ button {
 .country-card {
     @include flex(column);
     align-items: flex-start;
-    width: auto;
+    width: 320px;
     border-radius: 15px;
     background-color: $white;
     overflow: hidden;
