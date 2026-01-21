@@ -9,16 +9,24 @@ body {
     background-color: $grey-950;
 }
 
+p {line-height: 2;}
+
 .container{
     background-color: $grey-50;
+    min-height: 100vh;
+    height: 100%;
     // TODO: responsive desktop
 }
 
-button {
+button {    
     display: inherit;
     justify-content: inherit;
     align-items: inherit;
     width: inherit;
+}
+
+.button-primary{
+    @include button-style;
 }
 
 // header styles
@@ -30,7 +38,6 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
 
     &__button {
-        @include button-style;
         font-size: 14px;
         font-weight: 600;
         color: $grey-950;
@@ -100,3 +107,9 @@ button {
     display: none ;
 }
 
+
+// –––––––––––– hover, active ––––––––––––––––––
+.country-card:hover {
+    zoom: 1.05;
+    transition: ease-in-out 10s;
+}

@@ -30,6 +30,19 @@ const countriesAPI = {
     }
   },
 
+  async getCountriesByCodes(codes: string[]) {
+    const res = await fetch(
+      `${BASE_URL}/alpha?codes=${codes.join(',')}&fields=name,cca3`
+    )
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch border countries')
+    }
+
+    return res.json()
+  },
+  
+
   getFilteredCountries: async (region: string): Promise<Country[]> => {
     try {
       const response = await fetch(`${BASE_URL}/region/${region}`);

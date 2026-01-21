@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import type { Country } from "../type/types";
 
 type CountryCardProps = {
@@ -5,8 +6,14 @@ type CountryCardProps = {
 };
 
 function CountryCard({ country }: CountryCardProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/country/${country.cca3}`);
+  };
+
   return (
-    <section key={country.cca3} className="country-card">
+    <section key={country.cca3} className="country-card" onClick={handleClick}>
       <picture>
         <img
           src={country.flags.png}
