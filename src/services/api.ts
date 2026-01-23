@@ -42,21 +42,7 @@ const countriesAPI = {
     }
 
     return res.json();
-  },
-
-  getFilteredCountries: async (region: string): Promise<Country[]> => {
-    try {
-      const response = await fetch(`${BASE_URL}/region/${region}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return await response.json();
-    } catch (error) {
-      console.error("Error fetching filtered countries:", error);
-      throw error;
-    }
-  },
-  
+  }
 };
 
 export default countriesAPI;
