@@ -1,17 +1,19 @@
-import type { Country } from '../type/types';
+import type { Country } from "../type/types";
 
-const BASE_URL = 'https://restcountries.com/v3.1';
+const BASE_URL = "https://restcountries.com/v3.1";
 
 const countriesAPI = {
   getAllCountries: async (): Promise<Country[]> => {
     try {
-      const response = await fetch(`${BASE_URL}/all?fields=name,flags,population,region,capital,cca3,region`);
+      const response = await fetch(
+        `${BASE_URL}/all?fields=name,flags,population,region,capital,cca3`,
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return await response.json();
     } catch (error) {
-      console.error('Error fetching countries:', error);
+      console.error("Error fetching countries:", error);
       throw error;
     }
   },
@@ -32,16 +34,15 @@ const countriesAPI = {
 
   async getCountriesByCodes(codes: string[]) {
     const res = await fetch(
-      `${BASE_URL}/alpha?codes=${codes.join(',')}&fields=name,cca3`
-    )
+      `${BASE_URL}/alpha?codes=${codes.join(",")}&fields=name,cca3`,
+    );
 
     if (!res.ok) {
-      throw new Error('Failed to fetch border countries')
+      throw new Error("Failed to fetch border countries");
     }
 
-    return res.json()
+    return res.json();
   },
-  
 
   getFilteredCountries: async (region: string): Promise<Country[]> => {
     try {
@@ -51,14 +52,11 @@ const countriesAPI = {
       }
       return await response.json();
     } catch (error) {
-      console.error('Error fetching filtered countries:', error);
+      console.error("Error fetching filtered countries:", error);
       throw error;
     }
   },
   
-}
-
-
-
+};
 
 export default countriesAPI;

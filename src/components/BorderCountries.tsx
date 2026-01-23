@@ -7,47 +7,47 @@ type CountryProps = {
   country: Country;
 };
 
-function BorderCountries({country}:CountryProps) {
-    const [border, setBorder] = useState<Country[]>([])
-    const navigate = useNavigate();
+function BorderCountries({ country }: CountryProps) {
+  const [border, setBorder] = useState<Country[]>([]);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!country.borders) return;
+  useEffect(() => {
+    if (!country.borders) return;
 
-        async function fetchBorders() {
-            try {
-                const data = await countriesAPI.getCountriesByCodes(country.borders ?? [])
-                setBorder(data)
-            } catch (error) {
-                console.error(error)
-            }
-        }
+    async function fetchBorders() {
+      try {
+        const data = await countriesAPI.getCountriesByCodes(
+          country.borders ?? [],
+        );
+        setBorder(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-        fetchBorders()
-    }, [country])
-    
+    fetchBorders();
+  }, [country]);
 
-
-    return (
-        <section className="borders">
-            <h3>Border Countries:</h3>
-                {border.length ? (
-    <div className="border-countries__list">
-      {border.map(bor => (
-        <button
-          className="button-primary"
-          key={bor.cca3}
-          onClick={() => navigate(`/country/${bor.cca3}`)}
-        >
-          {bor.name.common}
-        </button>
-      ))}
-    </div>): (
-    <p>N/A</p>
-  )}
-         
-        </section>
-    )
+  return (
+    <section className="borders">
+      <h3>Border Countries:</h3>
+      {border.length ? (
+        <div className="border-countries__list">
+          {border.map((bor) => (
+            <button
+              className="button-primary"
+              key={bor.cca3}
+              onClick={() => navigate(`/country/${bor.cca3}`)}
+            >
+              {bor.name.common}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <p>N/A</p>
+      )}
+    </section>
+  );
 }
 
 export default BorderCountries;

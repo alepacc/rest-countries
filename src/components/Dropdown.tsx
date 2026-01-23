@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp, faAngleDown, faXmark } from "@fortawesome/free-solid-svg-icons";
-import type { DropdownProps } from "../type/types";
+
+type DropdownProps = {
+  label: string; // The text to display on the dropdown
+  option: string[]; // The list of options to display in the dropdown
+  value: string | null; // The currently selected value
+  onChange: (value: string | null) => void; // Callback function when an option is selected
+}
 
 function Dropdown({
   label,

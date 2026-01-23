@@ -14,12 +14,12 @@ import CountryDetail from "./pages/CountryDetail";
 function App() {
   return (
     <BrowserRouter basename="/rest-countries">
-      <main className="container">
+      <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/country/:cca3" element={<CountryDetail />} />
         </Routes>
-      </main>
+      </div>
     </BrowserRouter>
   );
 }

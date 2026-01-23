@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Header() {
     function handleTheme() {
         console.log("theme");
-        throw new Error("Function not implemented.");
         // TODO: theme 
     }
 

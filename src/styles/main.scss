@@ -18,6 +18,12 @@ p {line-height: 2;}
     // TODO: responsive desktop
 }
 
+main {
+    @include flex(column);
+    gap: 10px;
+    padding: 20px;
+}
+
 button {    
     display: inherit;
     justify-content: inherit;
@@ -29,12 +35,12 @@ button {
     @include button-style;
 }
 
-// header styles
+// ––––––––– header styles –––––––––
 .header {
     @include flex(row);
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
 
     &__button {
@@ -47,25 +53,29 @@ button {
     }
 }
 
-.filter-dropdown, .filter-dropdown__options, .search-bar {
+// ––––––––– main elements –––––––––
+.filter-dropdown, .filter-dropdown__options {
     @include flex(row);
     justify-content: space-between;
     align-items: center;
-    width: 200px;
-    padding: 10px 20px;
-    background-color: $white;
-    border-radius: 5px;
-    box-shadow: 1px 2px 20px 5px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
+    @include button-style-2;
 }
 
-.search-bar{    width: 100%;
+.search-bar{    
+    @include flex(row);
+    @include button-style-2;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
 }
 .search-input {
-    width: 400px;
+    flex: 1;
+    min-width: 0;
     font-size: 14px;
     color: $grey-950;
     border: none;
+    outline: none;
+    background-color: transparent;
 }
 
 .filter-dropdown__options {
@@ -75,7 +85,7 @@ button {
     margin-top: 5px;
 }           
 
-// components styles
+// ––––––––– components styles –––––––––
 .country-card {
     @include flex(column);
     align-items: flex-start;
@@ -102,7 +112,7 @@ button {
 
 
 
-// theme variables
+// ––––––––– theme –––––––––
 .dark-mode{
     display: none ;
 }
