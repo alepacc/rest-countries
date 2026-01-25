@@ -6,7 +6,6 @@
 
 body {
     font-family: 'Nunito Sans';
-    background-color: $grey-950;
 }
 
 p {line-height: 2;}
@@ -49,16 +48,35 @@ button {
         color: $grey-950;
         background-color: transparent;
         border: none;
-       
+        gap: 5px;
+    
+    }
+
+    &__title{
+        cursor: pointer;
     }
 }
 
 // ––––––––– main elements –––––––––
+.home-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .filter-dropdown, .filter-dropdown__options {
     @include flex(row);
     justify-content: space-between;
     align-items: center;
     @include button-style-2;
+    max-height: min-content;
+}
+
+.filter-dropdown__options-container{
+    width: 100%;
+    display: inline-grid;
 }
 
 .search-bar{    
@@ -67,6 +85,10 @@ button {
     width: 100%;
     gap: 10px;
     align-items: center;
+    min-width: 300px;
+    max-width: 450px;
+    max-height: min-content;
+
 }
 .search-input {
     flex: 1;
@@ -95,31 +117,56 @@ button {
     overflow: hidden;
     box-shadow: 1px 2px 20px 5px rgba(0, 0, 0, 0.05);
     cursor: pointer;
+    min-height: 450px;
+
 
     &__detail {
         @include flex(column);
         gap: 5px;
         padding: 20px;
         margin: 15px 0;
+        gap:20px;
     }
+
+    picture{
+        height: 200px;
+    }
+
+    img {
+        border-bottom: 0.5px solid lightgrey;
+        height: 100%;
+        overflow: clip;
+        aspect-ratio: 16/9;
+    }
+
 }
 
 .country-list {
-    @include flex(column);
+    @include flex(row);
     align-items: center;
-    gap: 20px;
+    gap: 25px;
+    flex-wrap: wrap;
+    // justify-content: center;
 }
-
 
 
 // ––––––––– theme –––––––––
 .dark-mode{
     display: none ;
+    // # TODO: implementing theme
+}
+
+// ––––––––– responsive –––––––––
+// #TODO: adding media query
+@media (min-width: 758px) {
+    .filter-dropdown__options-container{
+        justify-items: end;
+    }
 }
 
 
 // –––––––––––– hover, active ––––––––––––––––––
 .country-card:hover {
-    zoom: 1.05;
+    zoom: 1.01;
     transition: ease-in-out 10s;
 }

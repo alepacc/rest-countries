@@ -41,47 +41,49 @@ function CountryDetail() {
               alt={country.flags.alt || `Flag of ${country.name.common}`}
             />
           </picture>
-          <h2>{country.name.common}</h2>
-          <span>
-            <p>
-                <b>Naive Name: </b>
-                {country.name.nativeName
-                ? Object.values(country.name.nativeName)[0].common
-                : country.name.common}
-            </p>            
-            <p>
-              <strong>Population:</strong> {country.population}
-            </p>
-            <p>
-              <strong>Region:</strong> {country.region}
-            </p>
-            <p>
-              <strong>Sub Region:</strong> {country.subregion ?? "N/A"}
-            </p>
-            <p>
-              <strong>Capital:</strong> {country.capital?.[0] ?? "N/A"}
-            </p>
-          </span>
-          <span>
-            <p>
-              <b>Top Level Domain:</b> {country.tld}
-            </p>
-            <p>
-              <b>Currencies:</b>{" "}
-              {country.currencies
-                ? Object.values(country.currencies)
-                    .map((cur) => cur.name)
-                    .join(", ")
-                : "N/A"}
-            </p>
-            <p>
-              <b>Languages:</b>{" "}
-              {country.languages
-                ? Object.values(country.languages).join(", ")
-                : "N/A"}
-            </p>
-          </span>
-          <BorderCountries country={country}/>
+          <div className="country-detail__info">
+            <h2>{country.name.common}</h2>
+            <span>
+              <p>
+                  <b>Naive Name: </b>
+                  {country.name.nativeName
+                  ? Object.values(country.name.nativeName)[0].common
+                  : country.name.common}
+              </p>            
+              <p>
+                <strong>Population:</strong> {country.population}
+              </p>
+              <p>
+                <strong>Region:</strong> {country.region}
+              </p>
+              <p>
+                <strong>Sub Region:</strong> {country.subregion ?? "N/A"}
+              </p>
+              <p>
+                <strong>Capital:</strong> {country.capital?.[0] ?? "N/A"}
+              </p>
+            </span>
+            <span>
+              <p>
+                <b>Top Level Domain:</b> {country.tld}
+              </p>
+              <p>
+                <b>Currencies:</b>{" "}
+                {country.currencies
+                  ? Object.values(country.currencies)
+                      .map((cur) => cur.name)
+                      .join(", ")
+                  : "N/A"}
+              </p>
+              <p>
+                <b>Languages:</b>{" "}
+                {country.languages
+                  ? Object.values(country.languages).join(", ")
+                  : "N/A"}
+              </p>
+            </span>
+            <BorderCountries country={country}/>
+          </div>
         </section>
       )}
     </>

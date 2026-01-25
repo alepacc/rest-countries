@@ -13,7 +13,7 @@ import CountryDetail from "./pages/CountryDetail";
  */
 function App() {
   return (
-    <BrowserRouter basename="/rest-countries">
+    <BrowserRouter basename="/rest-countries/">
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />

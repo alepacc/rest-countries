@@ -45,7 +45,7 @@ function Dropdown({
           }
         </button>
       </div>
-      <div>
+      <div className="filter-dropdown__options-container">
         {isOpen && (
           <ul className="filter-dropdown__options">
             {option.map((opt) => (
@@ -61,3 +61,5 @@ function Dropdown({
 }
 
 export default Dropdown;
+
+
