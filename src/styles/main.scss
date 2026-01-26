@@ -6,6 +6,8 @@
 
 body {
     font-family: 'Nunito Sans';
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 p {line-height: 2;}
@@ -149,6 +151,19 @@ button {
     // justify-content: center;
 }
 
+.country-detail {
+    @include flex(column);
+    gap: 5px;
+    padding: 20px;
+    margin: 15px 0;
+    gap:20px;
+}
+.country-detail__info {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
 
 // ––––––––– theme –––––––––
 .dark-mode{
@@ -162,6 +177,35 @@ button {
     .filter-dropdown__options-container{
         justify-items: end;
     }
+
+    .country-detail {
+        @include flex(row);
+
+        picture {
+            width: 50%;
+            img {
+                width: -webkit-fill-available;
+            }
+        }
+
+        &__info {
+            width: 50%;
+        }
+
+        &__info-columns {
+            gap: 50px;
+            display: inherit;
+            justify-content: flex-start;
+        }
+    }
+
+
+
+}
+
+@media (min-width: 1440px) {
+    .country-detail{zoom: 1.8;}
+    
 }
 
 

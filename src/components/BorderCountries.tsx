@@ -44,7 +44,7 @@ function BorderCountries({ country }: CountryProps) {
           ))}
         </div>
       ) : (
-        <p>N/A</p>
+        <p>None</p>
       )}
     </section>
   );
