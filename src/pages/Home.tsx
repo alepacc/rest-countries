@@ -19,7 +19,7 @@ function Home() {
             setCountries(data);
         } catch (error) {
             console.error("Error fetching countries:", error);
-            // TODO: Handle error appropriately in the UI
+            // TODO: Handle error in the UI
         }
         };
 
