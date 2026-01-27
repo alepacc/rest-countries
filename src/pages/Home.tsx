@@ -10,6 +10,7 @@ function Home() {
     const [countries, setCountries] = useState<Country[]>([]);
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
     const [search, setSearch] = useState("");
+    const [error, setError] = useState<string | null>(null);
 
     // all counties list
     useEffect(() => {
@@ -17,9 +18,9 @@ function Home() {
         try {
             const data = await countriesAPI.getAllCountries();
             setCountries(data);
-        } catch (error) {
-            console.error("Error fetching countries:", error);
-            // TODO: Handle error in the UI
+        } catch (err) {
+            console.error("Error fetching countries:", err);
+            setError(err instanceof Error ? err.message : "An error occurred");
         }
         };
 
@@ -55,6 +56,7 @@ function Home() {
                 />
             </div>
             <CountryList countries={filteredCountries} />
+            {error && <p className="country-detail" style={{ color: "red" }}>{error}</p>}
         </main>
         </>
     );

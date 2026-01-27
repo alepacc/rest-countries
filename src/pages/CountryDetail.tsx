@@ -11,6 +11,7 @@ function CountryDetail() {
   const [country, setCountry] = useState<Country | null>(null);
   const { cca3 } = useParams<{ cca3: string }>();
   const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -18,8 +19,9 @@ function CountryDetail() {
       try {
         const data = await countriesAPI.getCountryByCca3(cca3);
         setCountry(data);
-      } catch (error) {
-        console.error("Error fetching country details:", error);
+      } catch (err) {
+        console.error("Error fetching country details:", err);
+        setError(err instanceof Error ? err.message : "An error occurred");
       }
     };
 
@@ -33,6 +35,7 @@ function CountryDetail() {
         <FontAwesomeIcon icon={faArrowLeftLong} />
         Back
       </button>
+      {error && <p className="country-detail" style={{ color: "red" }}>{error}</p>}
       {country && (
         <section className="country-detail">
           <picture>
