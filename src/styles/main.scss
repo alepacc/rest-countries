@@ -8,12 +8,14 @@ body {
     font-family: 'Nunito Sans';
     max-width: 1440px;
     margin: 0 auto;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 p {line-height: 2;}
 
 .container{
-    background-color: $grey-50;
+    background-color: inherit;
     min-height: 100vh;
     height: 100%;
     // TODO: responsive desktop
@@ -30,6 +32,7 @@ button {
     justify-content: inherit;
     align-items: inherit;
     width: inherit;
+    color: var(--text);
 }
 
 .button-primary{
@@ -43,11 +46,12 @@ button {
     align-items: center;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    background-color: var(--element);
 
     &__button {
         font-size: 14px;
         font-weight: 600;
-        color: $grey-950;
+        color: var(--text);
         background-color: transparent;
         border: none;
         gap: 5px;
@@ -76,10 +80,17 @@ button {
     max-height: min-content;
 }
 
-.filter-dropdown__options-container{
-    width: 100%;
-    display: inline-grid;
-}
+.filter-dropdown__options {
+    @include flex(column);
+    align-items: flex-start;
+    gap: 10px;
+    position: absolute;
+
+    &-container{
+        width: 100%;
+        display: inline-grid;
+    }
+}       
 
 .search-bar{    
     @include flex(row);
@@ -96,18 +107,13 @@ button {
     flex: 1;
     min-width: 0;
     font-size: 14px;
-    color: $grey-950;
+    color: var(--text);
     border: none;
     outline: none;
     background-color: transparent;
 }
 
-.filter-dropdown__options {
-    @include flex(column);
-    align-items: flex-start;
-    gap: 10px;
-    margin-top: 5px;
-}           
+    
 
 // ––––––––– components styles –––––––––
 .country-card {
@@ -115,7 +121,7 @@ button {
     align-items: flex-start;
     width: 320px;
     border-radius: 15px;
-    background-color: $white;
+    background-color: var(--element);
     overflow: hidden;
     box-shadow: 1px 2px 20px 5px rgba(0, 0, 0, 0.05);
     cursor: pointer;
@@ -135,7 +141,7 @@ button {
     }
 
     img {
-        border-bottom: 0.5px solid lightgrey;
+        border-bottom: 0.5px solid rgba(lightgray, 0.5);
         height: 100%;
         overflow: clip;
         aspect-ratio: 16/9;
@@ -164,12 +170,6 @@ button {
     flex-direction: column;
 }
 
-
-// ––––––––– theme –––––––––
-.dark-mode{
-    display: none ;
-    // # TODO: implementing theme
-}
 
 // ––––––––– responsive –––––––––
 // #TODO: adding media query
