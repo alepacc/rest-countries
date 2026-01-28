@@ -64,6 +64,7 @@ During this project I practiced and improved:
 - Handling UI themes (light/dark mode)
 - Building responsive layouts with SCSS
 - Navigating between dynamic routes with React Router
+- LocalStorage for theme persistence and caching country data
 
 
 ##  How Filtering Works
