@@ -201,13 +201,8 @@ button {
 
 }
 
-@media (min-width: 1440px) {
-    .country-detail{zoom: 1.8;}
-    
-}
 
-
-// –––––––––––– hover, active ––––––––––––––––––
+// –––––––––––– hover ––––––––––––––––––
 .country-card:hover {
     box-shadow: 1px 12px 10px 10px #00000020;
     transition: ease-in-out 0.2s;
