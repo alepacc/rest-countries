@@ -1,100 +1,119 @@
-# Frontend Mentor - REST Countries API with color theme switcher
+# 🌍 REST Countries Explorer
 
-![Design preview for the REST Countries API with color theme switcher coding challenge](preview.jpg)
+A responsive web application built with **React + TypeScript** that allows users to explore countries around the world using data from the REST Countries API.
 
-## Welcome! 👋
+This project is based on the *Frontend Mentor – REST Countries API challenge* and focuses on clean architecture, state management, and UI consistency.
 
-Thanks for checking out this front-end coding challenge.
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
 
-**To do this challenge, you need a good understanding of HTML, CSS, and JavaScript.**
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-%23CC6699.svg?style=for-the-badge&logo=sass&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
-## The challenge
 
-Your challenge is to integrate with the [REST Countries API](https://restcountries.com) to pull country data and display it like in the designs.
+[Live Demo](https://alepacc.github.io/rest-countries/)
 
-You can use any JavaScript framework/library on the front-end such as [React](https://reactjs.org) or [Vue](https://vuejs.org). You also have complete control over which packages you use to do things like make HTTP requests or style your project.
+##  Features
 
-Your users should be able to:
+- View a list of all countries with basic information
+- Search countries by name
+- Filter countries by region (continent)
+- View detailed information for a single country
+- Navigate between border countries
+- Toggle between **Light Mode / Dark Mode**
+- Fully responsive layout
 
-- See all countries from the API on the homepage
-- Search for a country using an `input` field
-- Filter countries by region
-- Click on a country to see more detailed information on a separate page
-- Click through to the border countries on the detail page
-- Toggle the color scheme between light and dark mode *(optional)*
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+##  Technologies Used
 
-**⚠️ NOTE ⚠️: Sometimes the REST Countries API can go down. We've added a `data.json` file with all the country data if you prefer to use that instead. However, please be aware that the data in the JSON file might not be up-to-date.**
+- **React**
+- **TypeScript**
+- **React Router**
+- **REST Countries API**
+- **SCSS**
+- **Font Awesome** icons
+- **Vite**
 
-## Where to find everything
 
-Your task is to build out the project to the designs inside the `/design` folder. 
+##  Project Structure
 
-In this challenge, you will find mobile and desktop designs in light and dark mode color schemes for both pages.
+The project follows a modular and scalable structure:
+```bash
+src/
+├── components/     # Reusable UI components
+├── pages/          # Route-based pages (Home, CountryDetail)
+├── services/       # API calls
+├── types/          # TypeScript interfaces
+├── styles/         # Global and component styles
+├── main.tsx        # Application entry point
+└── App.tsx         # Main application component
+```
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
 
-If you would like the Figma design file to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+##  What I Learned
 
-There are no assets for this challenge, as the country flags will be pulled from the [REST Countries API](https://restcountries.com) and you can use an icon font library for the icons.
+During this project I practiced and improved:
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+- Fetching and handling external APIs
+- Managing state with React hooks (`useState`, `useEffect`, `useMemo`)
+- Filtering data efficiently on the client side
+- Structuring a React project in a clean and maintainable way
+- Using **TypeScript** to strongly type components and API responses
+- Handling UI themes (light/dark mode)
+- Building responsive layouts with SCSS
+- Navigating between dynamic routes with React Router
 
-## Building your project
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+##  How Filtering Works
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+- **Region filtering** is handled on the client side using `useMemo`
+- **Search filtering** works by matching the country name against user input
+- Filters can be combined without triggering additional API requests
 
-## Deploying your project
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+##  Theme Management
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+The theme (light/dark) is managed locally using React state.
+A CSS class is toggled on the `<body>` element to switch styles globally.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
 
-## Create a custom `README.md`
+##  API
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+Data is fetched from the official REST Countries API: [restcountries.com/v3.1](https://restcountries.com/v3.1)
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+##  Getting Started
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+Clone the repository:
 
-## Submitting your solution
+```bash
+git clone https://github.com/alepacc/rest-countries.git
+```
+Move into the project folder:
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+```bash
+cd rest-countries
+```
+Install dependencies:
+```bash
+npm install 
+```
+Run the project locally:
+```bash
+npm run dev
+```
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
 
-## Sharing your solution
+##  Screenshots
+<!-- Aggiungi qui gli screenshot -->
+### homepage
+![Home Page - Light Mode](./screenshots/alepacc.github.io_rest-countries_home.png)
+### country detail page
+![Country Detail - Dark Mode](./screenshots/alepacc.github.io_rest-countries_detail-dark.png)
+### mobile view
+![Mobile View](./screenshots/alepacc.github.io_rest-countries_mobile.png)
 
-There are multiple places you can share your solution:
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi@frontendmentor.io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+## Author
+GitHub: [@alepacc](https://github.com/alepacc)
