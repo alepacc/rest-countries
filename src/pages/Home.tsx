@@ -7,18 +7,36 @@ import Header from "../components/Header";
 import SearchInput from "../components/SearchInput";
 
 function Home() {
-    const [countries, setCountries] = useState<Country[]>([]);
+    const [data, setCountries] = useState<Country[]>([]);
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
     const [search, setSearch] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    // all counties list
+    // all countries list
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // Try to load from localStorage first
+                const savedCountries = localStorage.getItem("countries");
+                if (savedCountries) {
+                    try {
+                        const cachedData = JSON.parse(savedCountries);
+                        if (Array.isArray(cachedData) && cachedData.length > 0) {
+                            setCountries(cachedData);
+                            setIsLoading(false);
+                            return;
+                        }
+                    } catch (parseError) {
+                        console.error("Error parsing cached countries:", parseError);
+                        localStorage.removeItem("countries");
+                    }
+                }
+
+                // Fetch from API
                 const data = await countriesAPI.getAllCountries();
                 setCountries(data);
+                localStorage.setItem("countries", JSON.stringify(data));
             } catch (err) {
                 console.error("Error fetching countries:", err);
                 setError(err instanceof Error ? err.message : "An error occurred");
@@ -31,7 +49,7 @@ function Home() {
     }, []);
 
     const filteredCountries = useMemo(() => {
-        let result = countries;
+        let result = data;
 
         // filter by region w/ dropdown
         if (selectedRegion) {
@@ -43,7 +61,7 @@ function Home() {
         );
 
         return result;
-    }, [countries, selectedRegion, search]);
+    }, [data, selectedRegion, search]);
 
     return (
         <>
