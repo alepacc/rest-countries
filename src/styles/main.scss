@@ -209,6 +209,6 @@ button {
 
 // –––––––––––– hover, active ––––––––––––––––––
 .country-card:hover {
-    zoom: 1.01;
-    transition: ease-in-out 10s;
+    box-shadow: 1px 12px 10px 10px #00000020;
+    transition: ease-in-out 0.2s;
 }
