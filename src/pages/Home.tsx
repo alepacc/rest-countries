@@ -11,17 +11,20 @@ function Home() {
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
     const [search, setSearch] = useState("");
     const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     // all counties list
     useEffect(() => {
         const fetchData = async () => {
-        try {
-            const data = await countriesAPI.getAllCountries();
-            setCountries(data);
-        } catch (err) {
-            console.error("Error fetching countries:", err);
-            setError(err instanceof Error ? err.message : "An error occurred");
-        }
+            try {
+                const data = await countriesAPI.getAllCountries();
+                setCountries(data);
+            } catch (err) {
+                console.error("Error fetching countries:", err);
+                setError(err instanceof Error ? err.message : "An error occurred");
+            } finally {
+                setIsLoading(false);    
+            }
         };
 
         fetchData();
@@ -55,7 +58,10 @@ function Home() {
                 onChange={setSelectedRegion}
                 />
             </div>
-            <CountryList countries={filteredCountries} />
+            {isLoading ? <span>Loading...</span> : (
+                <CountryList countries={filteredCountries} />
+            )}
+            
             {error && <p className="country-detail" style={{ color: "red" }}>{error}</p>}
         </main>
         </>
