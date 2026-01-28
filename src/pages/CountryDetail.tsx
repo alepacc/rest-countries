@@ -49,7 +49,7 @@ function CountryDetail() {
             <div className="country-detail__info-columns">
               <span>
                 <p>
-                    <b>Naive Name: </b>
+                    <b>Native Name: </b>
                     {country.name.nativeName
                     ? Object.values(country.name.nativeName)[0].common
                     : country.name.common}
