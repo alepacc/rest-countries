@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleUp, faAngleDown, faXmark } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faAngleUp, faAngleDown, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { ChevronDown, ChevronUp, X } from 'lucide-react';
 
 type DropdownProps = {
   label: string; // The text to display on the dropdown
@@ -32,15 +33,16 @@ function Dropdown({
         <button onClick={() => setIsOpen((prev) => !prev)}>
           {value ?? label}
           {value ? ( // if region is selected -> Xmark
-            <FontAwesomeIcon icon={faXmark} onClick={(e) => {
+            <X className="dropdown-xmark" onClick={(e) => {
                 e.stopPropagation();
                 handleClear();
               }}/>
           )
           : isOpen ? ( 
-            <FontAwesomeIcon icon={faAngleUp} />
+            <ChevronUp className="dropdown-chevron" />
           ) : (
-            <FontAwesomeIcon icon={faAngleDown} />
+            // <FontAwesomeIcon icon={faAngleDown} />
+            <ChevronDown  />
           )
           }
         </button>

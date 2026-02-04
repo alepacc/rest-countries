@@ -1,7 +1,8 @@
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Sun, Moon } from 'lucide-react';
 
 function Header() {
   const navigate = useNavigate();
@@ -28,12 +29,12 @@ function Header() {
       <button className="header__button" onClick={handleTheme}>
         {theme == "dark" ? (
           <>
-            <FontAwesomeIcon icon={faSun} />
+            <Sun className="header__sun-icon" />
             Light Mode
           </>
         ) : (
           <>
-            <FontAwesomeIcon icon={faMoon} style={{ rotate: "-30deg" }} />
+            <Moon className="header__moon-icon" />
             Dark Mode
           </>
         )}

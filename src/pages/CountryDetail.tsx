@@ -3,9 +3,11 @@ import type { Country } from "../type/types";
 import countriesAPI from "../services/api";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import BorderCountries from "../components/BorderCountries";
+import { MoveLeft } from 'lucide-react';
+
 
 function CountryDetail() {
   const [country, setCountry] = useState<Country | null>(null);
@@ -33,7 +35,7 @@ function CountryDetail() {
       <Header />
       <main>
         <button className="button-primary" onClick={() => navigate(-1)}>
-          <FontAwesomeIcon icon={faArrowLeftLong} />
+          <MoveLeft className="button-primary__icon" />
           Back
         </button>
         {error && <p className="country-detail" style={{ color: "red" }}>{error}</p>}
@@ -99,3 +101,5 @@ function CountryDetail() {
 }
 
 export default CountryDetail;
+
+

@@ -1,5 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { Search } from 'lucide-react';
 
 type SearchInputProps = {
   value: string
@@ -9,7 +10,7 @@ type SearchInputProps = {
 function SearchInput({value, onChange}: SearchInputProps) {
     return(
         <div className="search-bar">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
+          <Search className="search-bar__icon" />
           <input
             className="search-input"
             type="text"
